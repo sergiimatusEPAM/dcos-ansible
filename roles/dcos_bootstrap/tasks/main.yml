@@ -252,7 +252,7 @@
   register: debug_dcos_configyaml_created
 
 - debug:
-    msg: Show debug of created genconf/config.yaml: {{ debug_dcos_configyaml_created }}
+    msg: "Show debug of created genconf/config.yaml: {{ debug_dcos_configyaml_created }}"
 
 - name: Flush handler now
   meta: flush_handlers
@@ -267,7 +267,7 @@
   register: debug_dcos_bash_linux_install
 
 - debug:
-    msg: Show debug of bash linux install: {{ debug_dcos_bash_linux_install }}
+    msg: "Show debug of bash linux install: {{ debug_dcos_bash_linux_install }}"
 
 - name: Unpack Windows installer packages
   command: "bash {{ install_win_file }}"
@@ -278,7 +278,7 @@
   register: debug_dcos_bash_windows_install
 
 - debug:
-    msg: Show debug of bash windows install: {{ debug_dcos_bash_windows_install }}
+    msg: "Show debug of bash windows install: {{ debug_dcos_bash_windows_install }}"
 
 # vvv GENERATE UPGRADE SCRIPTS vvv
 

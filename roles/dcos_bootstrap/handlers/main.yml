@@ -6,7 +6,7 @@
   register: debug_dcos_installsh_deleted
 
 - debug:
-    msg: Show debug of cleared dcos_install.sh: {{ debug_dcos_installsh_deleted }}
+    msg: "Show debug of cleared dcos_install.sh: {{ debug_dcos_installsh_deleted }}"
 
 - name: "Same version config update: Remove old upgrade.sh"
   file:
