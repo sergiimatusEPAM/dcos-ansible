@@ -62,7 +62,7 @@
 
 - name: Setting windows install file
   set_fact:
-     install_win_file: "{{ dcos['download_win']|basename }}"
+     install_win_file : "{{ dcos['download_win']|basename }}"
   when: dcos['download_win'] is defined
 
 - name: Purge old upgrade directory
@@ -249,6 +249,10 @@
     dest: "{{ download_path }}/genconf/config.yaml"
     mode: 0644
   notify: trigger_new_config
+  register: debug_dcos_configyaml_created
+
+- debug:
+    msg: Show debug of created genconf/config.yaml: {{ debug_dcos_configyaml_created }}
 
 - name: Flush handler now
   meta: flush_handlers
@@ -260,6 +264,10 @@
   args:
     chdir: "{{ download_path }}"
     creates: "{{ download_path }}/genconf/serve/dcos_install.sh"
+  register: debug_dcos_bash_linux_install
+
+- debug:
+    msg: Show debug of bash linux install: {{ debug_dcos_bash_linux_install }}
 
 - name: Unpack Windows installer packages
   command: "bash {{ install_win_file }}"
@@ -267,6 +275,10 @@
     chdir: "{{ download_path }}"
     creates: "{{ download_path }}/genconf/serve/windows/prerequisites/dcos_install.ps1"
   when: dcos['download_win'] is defined
+  register: debug_dcos_bash_windows_install
+
+- debug:
+    msg: Show debug of bash windows install: {{ debug_dcos_bash_windows_install }}
 
 # vvv GENERATE UPGRADE SCRIPTS vvv
 

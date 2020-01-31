@@ -3,6 +3,10 @@
     state: absent
     path: "{{ download_path }}/genconf/serve/dcos_install.sh"
   listen: trigger_new_config
+  register: debug_dcos_installsh_deleted
+
+- debug:
+    msg: Show debug of cleared dcos_install.sh: {{ debug_dcos_installsh_deleted }}
 
 - name: "Same version config update: Remove old upgrade.sh"
   file:
