@@ -260,7 +260,7 @@
 # vvv GENERATE INSTALLER vvv
 
 - name: Generate DC/OS bootstrap files
-  command: "bash {{ install_file }}"
+  command: "sudo bash {{ install_file }}"
   args:
     chdir: "{{ download_path }}"
     creates: "{{ download_path }}/genconf/serve/dcos_install.sh"
@@ -270,7 +270,7 @@
     msg: "Show debug of bash linux install: {{ debug_dcos_bash_linux_install }}"
 
 - name: Unpack Windows installer packages
-  command: "bash {{ install_win_file }}"
+  command: "sudo bash {{ install_win_file }}"
   args:
     chdir: "{{ download_path }}"
     creates: "{{ download_path }}/genconf/serve/windows/prerequisites/dcos_install.ps1"
